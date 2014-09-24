@@ -9,11 +9,13 @@
 /* Begin PBXBuildFile section */
 		8A371D6119D12936002679FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A371D6019D12936002679FA /* AppDelegate.swift */; };
 		8A371D6419D12936002679FA /* RefreshTable.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8A371D6219D12936002679FA /* RefreshTable.xcdatamodeld */; };
-		8A371D6619D12936002679FA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A371D6519D12936002679FA /* ViewController.swift */; };
 		8A371D6919D12936002679FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A371D6719D12936002679FA /* Main.storyboard */; };
 		8A371D6B19D12936002679FA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A371D6A19D12936002679FA /* Images.xcassets */; };
 		8A371D6E19D12936002679FA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A371D6C19D12936002679FA /* LaunchScreen.xib */; };
 		8A371D7A19D12936002679FA /* RefreshTableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A371D7919D12936002679FA /* RefreshTableTests.swift */; };
+		8A371D8419D12A58002679FA /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A371D8319D12A58002679FA /* TableViewController.swift */; };
+		8A371D8619D12A7E002679FA /* RefreshTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A371D8519D12A7E002679FA /* RefreshTable.swift */; };
+		8A371D8819D1AA5E002679FA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A371D8719D1AA5E002679FA /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,13 +33,15 @@
 		8A371D5F19D12936002679FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A371D6019D12936002679FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A371D6319D12936002679FA /* RefreshTable.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RefreshTable.xcdatamodel; sourceTree = "<group>"; };
-		8A371D6519D12936002679FA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8A371D6819D12936002679FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8A371D6A19D12936002679FA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8A371D6D19D12936002679FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		8A371D7319D12936002679FA /* RefreshTableTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RefreshTableTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A371D7819D12936002679FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A371D7919D12936002679FA /* RefreshTableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshTableTests.swift; sourceTree = "<group>"; };
+		8A371D8319D12A58002679FA /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		8A371D8519D12A7E002679FA /* RefreshTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshTable.swift; sourceTree = "<group>"; };
+		8A371D8719D1AA5E002679FA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A371D8819D1AA5E002679FA /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +66,7 @@
 		8A371D5219D12936002679FA = {
 			isa = PBXGroup;
 			children = (
+				8A371D8719D1AA5E002679FA /* QuartzCore.framework */,
 				8A371D5D19D12936002679FA /* RefreshTable */,
 				8A371D7619D12936002679FA /* RefreshTableTests */,
 				8A371D5C19D12936002679FA /* Products */,
@@ -80,7 +86,8 @@
 			isa = PBXGroup;
 			children = (
 				8A371D6019D12936002679FA /* AppDelegate.swift */,
-				8A371D6519D12936002679FA /* ViewController.swift */,
+				8A371D8519D12A7E002679FA /* RefreshTable.swift */,
+				8A371D8319D12A58002679FA /* TableViewController.swift */,
 				8A371D6719D12936002679FA /* Main.storyboard */,
 				8A371D6A19D12936002679FA /* Images.xcassets */,
 				8A371D6C19D12936002679FA /* LaunchScreen.xib */,
@@ -215,8 +222,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A371D6619D12936002679FA /* ViewController.swift in Sources */,
+				8A371D8619D12A7E002679FA /* RefreshTable.swift in Sources */,
 				8A371D6419D12936002679FA /* RefreshTable.xcdatamodeld in Sources */,
+				8A371D8419D12A58002679FA /* TableViewController.swift in Sources */,
 				8A371D6119D12936002679FA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -343,6 +351,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = RefreshTable/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -353,6 +362,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = RefreshTable/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -411,6 +421,7 @@
 				8A371D7F19D12936002679FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8A371D8019D12936002679FA /* Build configuration list for PBXNativeTarget "RefreshTableTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +430,7 @@
 				8A371D8219D12936002679FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
