@@ -33,6 +33,14 @@
 import UIKit
 import QuartzCore
 
+/*
+* RefreshTable is a control that display a view on the top of UITableView. It helps
+* user to refresh data of UITableView. This class is based on EGORefreshTableHeaderView
+*/
+
+/* 
+* State of RefreshTable
+*/
 enum RefreshTableState {
     case
     Pulling,
@@ -40,11 +48,25 @@ enum RefreshTableState {
     Loading
 }
 
+/*
+* Style of RefreshTable
+* You can define your style here
+*/
 enum RefreshTableStyle {
     case
+    // Default style - actually first style
     CircleWave
+    
+    // Other style here
+    
 }
 
+// MARK:
+// MARK: RefreshTableDelegate
+
+/*
+* RefreshTableDelegate, like EGORefreshTableHeaderViewDelegate
+*/
 protocol RefreshTableDelegate: NSObjectProtocol {
     
     func refreshTableDidRefresh(view: RefreshTable)
@@ -52,15 +74,12 @@ protocol RefreshTableDelegate: NSObjectProtocol {
     
 }
 
+// MARK:
+// MARK: RefreshTable Class
+
 class RefreshTable: UIView {
     
-    // MARK:
-    // MARK: Public propertise
-    
     var delegate : RefreshTableDelegate?
-    
-    // MARK:
-    // MARK: Private variables
     
     private var _currentState : RefreshTableState = .Normal
     
@@ -91,6 +110,9 @@ class RefreshTable: UIView {
         
         _refreshLayer = createRefreshLayer()
         self.layer.addSublayer(_refreshLayer)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadAnimation:", name: UIApplicationWillEnterForegroundNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "removeAnimation:", name: UIApplicationDidEnterBackgroundNotification, object: nil)
         
     }
     
@@ -160,6 +182,7 @@ class RefreshTable: UIView {
             _refreshLayer!.timeOffset = 1
             UIView.commitAnimations()
             
+            
             _loadingLayer = createLoadingLayer()
             self.layer.addSublayer(_loadingLayer)
             
@@ -180,10 +203,27 @@ class RefreshTable: UIView {
         
     }
     
+    func loadAnimation(notification: NSNotification) {
+        
+        _refreshLayer?.timeOffset = 0
+        _refreshLayer?.addAnimation(pullingAnimations()!, forKey: "anim")
+    
+    }
+    
+    func removeAnimation(notification: NSNotification) {
+        
+        _refreshLayer?.removeAllAnimations()
+        _loadingLayer?.removeAllAnimations()
+        _loadingLayer?.removeFromSuperlayer()
+        
+    }
+    
     // MARK:
     // MARK: Private functions
     
     private func setState(state: RefreshTableState) {
+        
+        // some config if needed
         
         _currentState = state
     }
@@ -208,17 +248,19 @@ class RefreshTable: UIView {
             shape.lineCap = kCALineCapRound
             shape.lineJoin = kCALineJoinRound
             
+            // TODO: your custom refresh layer here
+            
         default:
             return nil
         }
         
-        shape.addAnimation(pullingAnimations(layer: shape)!, forKey: "anim")
+        shape.addAnimation(pullingAnimations()!, forKey: "anim")
         shape.speed = 0
         
         return shape
     }
     
-    private func pullingAnimations(#layer: CAShapeLayer) -> CAAnimationGroup? {
+    private func pullingAnimations() -> CAAnimationGroup? {
         
         switch _currentStyle {
         case .CircleWave:
@@ -240,6 +282,8 @@ class RefreshTable: UIView {
             group.duration = 1
             
             return group
+            
+            // TODO: your custom pulling style here
             
         default:
             return nil
@@ -266,16 +310,18 @@ class RefreshTable: UIView {
             shape.lineCap = kCALineCapRound
             shape.lineJoin = kCALineJoinRound
             
+            // TODO: your custom loading layer here
+            
         default:
             return nil
         }
         
-        shape.addAnimation(loadingAnimations(layer: shape)!, forKey: "anim")
+        shape.addAnimation(loadingAnimations()!, forKey: "anim")
         
         return shape
     }
     
-    private func loadingAnimations(#layer: CAShapeLayer) -> CAAnimationGroup? {
+    private func loadingAnimations() -> CAAnimationGroup? {
         
         switch _currentStyle {
         case .CircleWave:
@@ -295,6 +341,8 @@ class RefreshTable: UIView {
             group.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
             
             return group
+            
+            // TODO: your custom loading style here
             
         default:
             return nil
